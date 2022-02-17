@@ -1,7 +1,6 @@
-p = int(input())
-t = sorted(list(map(int, input().split())))
+p = input()
 s = tmp = 0
-for i in t:
+for i in sorted(map(int, input().split())):
     tmp += i
     s += tmp
 print(s)
