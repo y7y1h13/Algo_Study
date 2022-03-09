@@ -1,5 +1,5 @@
 def solution(N, M):
-    p, k = list()
+    p, k = list(), list()
     for i in range(M):
         a = input().split()
         p.append(int(a[0]))
@@ -16,9 +16,9 @@ def solution(N, M):
     else:
         ans += k[0] * N
 
-    return ans
+    print(ans)
 
 
 if __name__ == "__main__":
     N, M = map(int, input().split())
-    print(solution(N, M))
+    solution(N, M)
