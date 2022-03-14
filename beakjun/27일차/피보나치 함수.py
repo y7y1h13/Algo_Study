@@ -1,15 +1,11 @@
-def fibo_dp(n, a, b):
+T = int(input())
 
-    if n == 0:
-        a += 1
-        return 0
-    elif n == 1:
-        b += 1
-        return 1
-    else:
-        print(a, b)
-        return fibo_dp(n - 1) + fibo_dp(n - 2)
-
-a = 0
-b = 0
-print(fibo_dp(int(input()),a,b))
+for _ in range(T):
+    t = int(input())
+    n0 = [1, 0]
+    n1 = [0, 1]
+    if t > 1:
+        for i in range(2, t + 1):
+            n0.append(n0[i - 1] + n0[i - 2])
+            n1.append(n1[i - 1] + n1[i - 2])
+    print(n0[t], n1[t])
