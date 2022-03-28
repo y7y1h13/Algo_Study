@@ -1,4 +1,5 @@
 import copy
+import sys
 
 
 def sel_wall(srt, cnt):
@@ -23,19 +24,23 @@ def sel_wall(srt, cnt):
 
 
 def virus(x, y, wall):
-    if wall[x][y] == 2:
-        for i in range(4):
-            nx = dx[i] + x
-            ny = dy[i] + y
-            if 0 <= nx < N and 0 <= ny < M:
-                if wall[nx][ny] == 0:
-                    wall[nx][ny] = 2
-                    virus(nx, ny, wall)
+    q = list()
+    q.append([x, y])
+    while q:
+        x, y = q.pop()
+        if wall[x][y] == 2:
+            for i in range(4):
+                nx = dx[i] + x
+                ny = dy[i] + y
+                if 0 <= nx < N and 0 <= ny < M:
+                    if wall[nx][ny] == 0:
+                        wall[nx][ny] = 2
+                        q.append([nx, ny])
 
 
 if __name__ == "__main__":
     N, M = map(int, input().split())
-    a = [list(map(int, input().split())) for _ in range(N)]
+    a = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
     dx = [1, -1, 0, 0]
     dy = [0, 0, 1, -1]
     m = 0
