@@ -1,0 +1,21 @@
+from itertools import combinations
+
+
+def solution(orders, course):
+    answer = []
+    for cour in course:
+        a = dict()
+        for order in orders:
+            for comb in combinations(order, cour):
+                c = ''.join(sorted(comb))
+                if c in a:
+                    a[c] += 1
+                else:
+                    a[c] = 1
+        for k, v in zip(a.keys(), a.values()):
+            if v == max(a.values()) and v > 1:
+                answer.append(k)
+    return sorted(answer)
+
+
+print(solution(["XYZ", "XWY", "WXA"], [2, 3, 4]))
