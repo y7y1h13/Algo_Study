@@ -1,0 +1,32 @@
+def solution(numbers, hand):
+    answer = ''
+    l = 10
+    r = 12
+    for i in numbers:
+        if i in [1,4,7]:
+            answer+='L'
+            l = i
+            
+        elif i in [3,6,9]:
+            answer+='R'
+            r = i
+        else:
+            i = 11 if i==0 else i
+            
+            aL = abs(i-l)
+            aR = abs(i-r)
+            
+            if sum(divmod(aL,3)) > sum(divmod(aR,3)):
+                answer+='R'
+                r = i
+            elif sum(divmod(aL,3)) < sum(divmod(aR,3)):
+                answer += 'L'
+                l = i
+            else:
+                if hand=='left':
+                    answer +='L'
+                    l = i
+                else:
+                    answer += 'R'
+                    r = i
+    return answer

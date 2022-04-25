@@ -1,0 +1,10 @@
+def solution(absolutes, signs):
+    answer = 0
+    
+    for idx, k in enumerate(signs):
+        if k == True:
+            answer += absolutes[idx]
+        if k == False:
+            answer -= absolutes[idx]
+    
+    return answer
