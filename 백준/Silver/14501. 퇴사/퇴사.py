@@ -1,16 +1,16 @@
 def dfs(day, tmp):
     global ans
-    if day == N + 1:
+    if day == N:
         if ans < tmp:
             ans = tmp
         return
     dfs(day+1, tmp)
-    if day + a[day][0] <= N + 1:
+    if day + a[day][0] <= N:
         dfs(day+a[day][0], tmp + a[day][1])
 
 
 N = int(input())
-a = [[0]] + [list(map(int, input().split()))for _ in range(N)]
+a = [list(map(int, input().split()))for _ in range(N)]
 ans = 0
-dfs(1, 0)
+dfs(0, 0)
 print(ans)
