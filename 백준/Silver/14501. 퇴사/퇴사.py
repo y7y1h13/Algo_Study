@@ -1,7 +1,8 @@
 def dfs(day, tmp):
     global ans
     if day == N + 1:
-        ans = max(ans, tmp)
+        if ans < tmp:
+            ans = tmp
         return
     dfs(day+1, tmp)
     if day + a[day][0] <= N + 1:
