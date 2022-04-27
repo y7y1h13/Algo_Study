@@ -10,7 +10,7 @@ def dfs(x, y):
         ans = max(ans, tmp)
         return
     for i in range(x, N):
-        for j in range(M):
+        for j in range(y if i == x else 0, M):
             if [i, j] not in q:
                 if ([i+1, j] not in q) and ([i-1, j] not in q) and ([i, j+1] not in q) and ([i, j-1] not in q):
                     q.append([i, j])
