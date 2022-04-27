@@ -8,10 +8,8 @@ def bfs(x, y, tmp):
     while q:
         x, y, tmp = q.popleft()
         if [x, y] == goal:
-            global ans
-            if ans > tmp:
-                ans = tmp
-                break
+            print(tmp)
+            break
         for dx, dy in dxy:
             nx = dx + x
             ny = dy + y
@@ -29,6 +27,4 @@ for _ in range(l):
     goal = list(map(int, input().split()))
     a = [[0] * n for _ in range(n)]
     visited = [[True] * n for _ in range(n)]
-    ans = 300
     bfs(now[0], now[1], 0)
-    print(ans)
