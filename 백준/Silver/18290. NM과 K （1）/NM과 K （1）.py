@@ -1,10 +1,7 @@
-def dfs(x, y):
+def dfs(x, y, d, s):
     global ans
-    if len(q) == K:
-        tmp = 0
-        for i in q:
-            tmp += a[i[0]][i[1]]
-        ans = max(ans, tmp)
+    if d == K:
+        ans = max(ans, s)
         return
     else:
         for i in range(x, N):
@@ -12,7 +9,7 @@ def dfs(x, y):
                 if [i, j] not in q:
                     if ([i + 1, j] not in q) and ([i - 1, j] not in q) and ([i, j + 1] not in q) and ([i, j - 1] not in q):
                         q.append([i, j])
-                        dfs(i, j)
+                        dfs(i, j, d + 1, s + a[i][j])
                         q.pop()
 
 
@@ -20,5 +17,5 @@ N, M, K = map(int, input().split())
 a = [list(map(int, input().split())) for _ in range(N)]
 q = []
 ans = -1e10
-dfs(0, 0)
+dfs(0, 0, 0, 0)
 print(ans)
