@@ -14,7 +14,7 @@ def recu(idx):
             s.pop()
 
     elif a[idx -1] == '<':
-        for i in range(s[-1], 10):
+        for i in range(s[-1] + 1, 10):
             if i not in s:
                 if chk(s[-1], i, a[idx - 1]):
                     s.append(i)
