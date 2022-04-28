@@ -7,13 +7,27 @@ def recu(idx):
         else:
             MAX = ''.join(map(str, s))
         return
+    if len(s) == 0:
+        for i in range(10):
+            s.append(i)
+            recu(idx + 1)
+            s.pop()
 
-    for i in range(10):
-        if i not in s:
-            if len(s) == 0 or chk(s[-1], i, a[idx - 1]):
-                s.append(i)
-                recu(idx + 1)
-                s.pop()
+    elif a[idx -1] == '<':
+        for i in range(s[-1], 10):
+            if i not in s:
+                if chk(s[-1], i, a[idx - 1]):
+                    s.append(i)
+                    recu(idx + 1)
+                    s.pop()
+
+    else:
+        for i in range(s[-1] + 1):
+            if i not in s:
+                if chk(s[-1], i, a[idx - 1]):
+                    s.append(i)
+                    recu(idx + 1)
+                    s.pop()
 
 
 def chk(i, j, k):
