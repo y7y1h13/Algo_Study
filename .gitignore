@@ -113,3 +113,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 .idea/misc.xml
+.idea/algo.iml
