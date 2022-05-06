@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 n, k = map(int, input().split())
 dp = [1] + [0] * k
 for _ in range(n):
