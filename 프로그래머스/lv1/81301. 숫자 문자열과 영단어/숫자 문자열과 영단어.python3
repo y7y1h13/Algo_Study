@@ -1,13 +1,7 @@
 def solution(s):
-    a = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
-    tmp = ''
-    ans = []
-    for i in s:
-        if i.isdigit():
-            ans.append(i)
-        else:
-            tmp += i
-            if tmp in a:
-                ans.append(a.index(tmp))
-                tmp = ''
-    return int(''.join(str(i) for i in ans))
+    w = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+
+    for idx, k in enumerate(w):
+        s = s.replace(k, str(idx))
+
+    return int(s)
