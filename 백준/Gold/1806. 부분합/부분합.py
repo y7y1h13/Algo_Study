@@ -20,9 +20,6 @@ while s < N:
     elif n_s < S:
         n_s += a[e]
         e += 1
-    else:
-        n_s -= a[s]
-        s += 1
 if ans == 100000:
     print(0)
 else:
