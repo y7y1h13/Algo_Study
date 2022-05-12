@@ -15,9 +15,8 @@ while s < N:
         n_s -= a[s]
         s += 1
     elif e == N:
-        n_s -= a[s]
-        s += 1
-    elif n_s < S:
+        break
+    else:
         n_s += a[e]
         e += 1
 if ans == 100000:
