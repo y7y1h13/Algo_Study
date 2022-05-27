@@ -1,0 +1,22 @@
+from collections import deque
+
+
+def solution(record):
+    answer = []
+    io = deque()
+    name = {}
+    for rec in record:
+        k = rec.split()
+
+        if len(k) == 3:
+            name[k[1]] = k[2]
+        if k[0] != 'Change':
+           io.append((k[0], k[1]))
+
+    for i in io:
+        if i[0] == 'Enter':
+            answer.append(f"{name[i[1]]}님이 들어왔습니다.")
+        else:
+            answer.append(f"{name[i[1]]}님이 나갔습니다.")
+    return answer
+
