@@ -3,7 +3,7 @@ from collections import deque
 
 def loc(x, y):
     if 0 <= x < N and 0 <= y < N:  # 범위 안에 있으면
-        if b_visited[x][y]:  # 몸이랑 닿으면
+        if (x, y) in body:  # 몸이랑 닿으면
             print(time)
             exit()
         elif apple[x][y]:  # 사과 만남
@@ -12,9 +12,7 @@ def loc(x, y):
             apple[x][y] = 0
         else:  # 사과 없음
             body.append((x, y))
-            a, b = body.popleft()
-            b_visited[a][b] = 0
-            b_visited[x][y] = 1
+            body.popleft()
     else:  # 벽 밖으로 나감
         print(time)
         exit()
@@ -58,7 +56,7 @@ while True:
         y -= 1
         loc(x, y)
 
-    if time in rot:
+    if time in rot: # 회전
         if rot[time] == 'D':
             locate += 1
         else:
