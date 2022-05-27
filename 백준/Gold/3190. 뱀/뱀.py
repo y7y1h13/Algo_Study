@@ -36,33 +36,20 @@ body = deque()  # 몸 위치 queue
 body.append((0, 0))
 b_visited[0][0] = 1  # 몸 위치 체크
 x, y = 0, 0
-locate = 1  # 바라보는 방향
+locate = 0  # 바라보는 방향
+dx = [0, 1, 0, -1]
+dy = [1, 0, -1, 0]
 
 while True:
+    x += dx[locate]
+    y += dy[locate]
     # 한칸 움직이기(바라보고 있는 방향에 따라서)
-    if locate % 4 == 0:
-        x -= 1
-        loc(x, y)
-
-    elif locate % 4 == 1:
-        y += 1
-        loc(x, y)
-
-    elif locate % 4 == 2:
-        x += 1
-        loc(x, y)
-
-    elif locate % 4 == 3:
-        y -= 1
-        loc(x, y)
+    loc(x, y)
 
     if time in rot: # 회전
         if rot[time] == 'D':
-            locate += 1
+            locate = (locate + 1) % 4
         else:
-            if locate - 1 < 0:
-                locate = 3
-            else:
-                locate -= 1
+            locate = (locate - 1) % 4
 
     time += 1
