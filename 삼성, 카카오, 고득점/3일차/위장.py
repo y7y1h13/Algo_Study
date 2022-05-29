@@ -1,15 +1,14 @@
 def solution(clothes):
-    answer = 0
+    answer = 1
     cloth = {}
     for c in clothes:
         if c[1] not in cloth:
-            cloth[c[1]] = [c[0]]
+            cloth[c[1]] = 1
         else:
-            cloth[c[1]].append(c[0])
-
-    for i in
-
-    return answer
+            cloth[c[1]] += 1
+    for i in cloth.values():
+        answer *= i+1
+    return answer - 1
 
 
 print(solution([["yellowhat", "headgear"], ["bluesunglasses", "eyewear"], ["green_turban", "headgear"]]))
