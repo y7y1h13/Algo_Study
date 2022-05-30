@@ -46,16 +46,13 @@ def rec(p):
     if correct_check(u):  # 3
         res = u + rec(v)
     else:  # 4
-        tmp = '('
-        tmp += rec(v)
-        tmp += ')'
+        res = '(' + rec(v) + ')'
         u = u[1:-1]
         for i in u:
             if i == '(':
-                tmp += ')'
+                res += ')'
             else:
-                tmp += '('
-        res += tmp
+                res += '('
     return res
 
 
