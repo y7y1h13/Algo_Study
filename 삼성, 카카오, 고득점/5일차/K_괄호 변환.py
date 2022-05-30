@@ -1,0 +1,70 @@
+from collections import deque
+
+
+def correct_check(p):  # 올바른 괄호 문자열 체크
+    a = deque(p)
+    b = deque()
+    flag = True
+    for i in range(len(a)):
+        if not flag:
+            break
+        if len(b) == 0:
+            if a[0] == '(':
+                b.append(a.popleft())
+            else:
+                flag = False
+        else:
+            if a[0] == '(':
+                b.append(a.popleft())
+            else:
+                if b[-1] == '(':
+                    b.pop()
+                    a.popleft()
+    if len(b):
+        flag = False
+    return flag
+
+
+def sep_uv(p):  # 2
+    a = 0
+    b = 0
+    for i in range(len(p)):
+        if p[i] == '(':
+            a += 1
+        else:
+            b += 1
+        if a == b:
+            u = p[:i + 1]
+            v = p[i + 1:] if i + 1 < len(p) else ""
+            break
+    return u, v
+
+
+def rec(p):
+    res = ""
+    if not len(p):  # 1
+        return ""
+    u, v = sep_uv(p)
+    if correct_check(u):  # 3
+        res = u + rec(v)
+    else:  # 4
+        res = '(' + rec(v) + ')'
+        u = u[1:-1]
+        for i in u:
+            if i == '(':
+                res += ')'
+            else:
+                res += '('
+    return res
+
+
+def solution(p):
+    if correct_check(p):
+        return p
+
+    answer = rec(p)
+
+    return answer
+
+
+print(solution(")("))
