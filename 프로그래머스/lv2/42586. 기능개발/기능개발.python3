@@ -1,0 +1,29 @@
+from collections import deque
+
+
+def solution(progresses, speeds):
+    q = deque(progresses)
+    p = deque(speeds)
+    answer = []
+    n = 0
+    while True:
+        if not len(q):
+            break
+        for idx, k in enumerate(zip(q, p)):
+            if sum(k) > 100:
+                q[idx] = 100
+            else:
+                q[idx] = sum(k)
+
+        if q[0] >= 100:
+            for i in range(len(q)):
+                if q[i] < 100:
+                    break
+                else:
+                    n = i + 1
+            answer.append(n)
+            for _ in range(n):
+                q.popleft()
+                p.popleft()
+
+    return answer
