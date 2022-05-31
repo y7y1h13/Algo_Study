@@ -1,0 +1,33 @@
+import math
+import re
+
+
+def solution(str1, str2):
+    p = re.compile('^[a-zA-Z]*$')
+    answer = 65536
+    a = list()
+    b = list()
+    for i in range(len(str1) - 1):
+        if p.match(str1[i:i + 2]):
+            a.append(str1[i:i + 2].lower())
+
+    for i in range(len(str2) - 1):
+        if p.match(str2[i:i + 2]):
+            b.append(str2[i:i + 2].lower())
+
+    a1 = a.copy()
+    union = a.copy()
+
+    for i in b:
+        union.append(i) if i not in a1 else a1.remove(i)
+
+    inter = []
+    for i in b:
+        if i in a:
+            inter.append(i)
+            a.remove(i)
+    if not len(inter) and not len(union):
+        pass
+    else:
+        answer = math.trunc(len(inter) / len(union) * 65536)
+    return answer
