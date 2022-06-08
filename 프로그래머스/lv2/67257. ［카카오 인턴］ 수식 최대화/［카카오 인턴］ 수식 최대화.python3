@@ -26,7 +26,7 @@ def cal(k, op):
 
 
 def solution(expression):
-    result = []
+    result = 0
     op = ['*', '-', '+']
     a = list()
     n = ''
@@ -44,5 +44,5 @@ def solution(expression):
 
     for i in permutations(op, 3):
         k = copy.deepcopy(a)
-        result.append(cal(k, i))
-    return max(result)
+        result = max(result, cal(k, i))
+    return result
