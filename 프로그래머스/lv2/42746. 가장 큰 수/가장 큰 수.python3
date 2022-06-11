@@ -1,5 +1,7 @@
 def solution(numbers):
+    if not sum(numbers):
+        return '0'
     answer = ''
     numbers = list(map(str, numbers))
     numbers = sorted(numbers, key=lambda x:x * 3, reverse=True)
-    return str(int(''.join(numbers)))
+    return ''.join(numbers)
