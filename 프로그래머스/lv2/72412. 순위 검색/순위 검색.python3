@@ -1,0 +1,44 @@
+from bisect import bisect_left
+from itertools import combinations
+from collections import defaultdict
+
+
+def solution(info, query):
+    answer = []
+    a = defaultdict(list)
+    for i in info:
+        ii = i.split()
+        i_key = ii[:-1]
+        i_value = int(ii[-1])
+
+        for k in range(5):
+            for c in combinations(i_key, k):
+                tmp = ''.join(c)
+                a[tmp].append(i_value)
+    for k in a:
+        a[k].sort()
+
+    for q in query:
+        qq = q.split()
+        q_key = qq[:-1]
+        q_value = int(qq[-1])
+
+        while 'and' in q_key:
+            q_key.remove('and')
+
+        while '-' in q_key:
+            q_key.remove('-')
+
+        q_key = ''.join(q_key)
+
+        if q_key in a:
+            scores = a[q_key]
+
+            if scores:
+                e = bisect_left(scores, q_value)
+
+                answer.append(len(scores) - e)
+        else:
+            answer.append(0)
+
+    return answer
