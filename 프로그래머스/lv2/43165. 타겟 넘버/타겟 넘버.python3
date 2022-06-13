@@ -1,0 +1,21 @@
+answer = 0
+
+
+def rec(s, cnt, numbers, target):
+    global answer
+    if cnt == len(numbers):
+        if s == target:
+            answer += 1
+            return
+        else:
+            return
+    rec(s + numbers[cnt], cnt + 1, numbers, target)
+
+    rec(s - numbers[cnt], cnt + 1, numbers, target)
+
+
+def solution(numbers, target):
+    global answer
+    rec(0, 0, numbers, target)
+
+    return answer
