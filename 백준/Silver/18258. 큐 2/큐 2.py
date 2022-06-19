@@ -2,6 +2,8 @@ import sys
 from collections import deque
 
 input = sys.stdin.readline
+
+
 def solution():
     q = deque()
     l = 0
@@ -30,16 +32,12 @@ def solution():
 
             elif op[0] == 'front':
                 if l:
-                    a = q.popleft()
-                    print(a)
-                    q.appendleft(a)
+                    print(q[0])
                 else:
                     print(-1)
             else:
                 if l:
-                    a = q.pop()
-                    print(a)
-                    q.append(a)
+                    print(q[-1])
                 else:
                     print(-1)
 
