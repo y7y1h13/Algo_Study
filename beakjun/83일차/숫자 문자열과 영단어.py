@@ -1,0 +1,10 @@
+def solution(s):
+    w = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+
+    for idx, k in enumerate(w):
+        s = s.replace(k, str(idx))
+
+    return int(s)
+
+
+print(solution("one4seveneight"))

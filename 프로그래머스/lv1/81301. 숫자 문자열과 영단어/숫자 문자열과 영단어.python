@@ -1,0 +1,15 @@
+def solution(s):
+    a = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+    answer = 0
+    tmp = ''
+    ans = []
+    for i in s:
+        if i.isdigit():
+            ans.append(i)
+        else:
+            tmp += i
+            if tmp in a:
+                ans.append(a.index(tmp))
+                tmp = ''
+    answer = int(''.join(str(i) for i in ans))
+    return answer
