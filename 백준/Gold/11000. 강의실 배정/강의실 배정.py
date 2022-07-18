@@ -4,7 +4,8 @@ from sys import stdin
 input = stdin.readline
 
 
-def solution(a):
+def solution():
+    a = sorted([list(map(int, input().split()))for _ in range(int(input()))])
     r = [-1]
     for s, e in a:
         if s < r[0]:
@@ -15,6 +16,4 @@ def solution(a):
 
 
 if __name__ == "__main__":
-    N = int(input())
-    a = sorted([list(map(int, input().split()))for _ in range(N)])
-    print(solution(a))
+    print(solution())
