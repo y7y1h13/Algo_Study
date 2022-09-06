@@ -1,15 +1,13 @@
 a = list(input())
-stack = []
 ans = 0
-
+s = list()
 for i in range(len(a)):
     if a[i] == '(':
-        stack.append(1)
-
+        s.append('(')
     else:
-        stack.pop()
-        if a[i-1] == '(':
-            ans += len(stack)
+        s.pop()
+        if a[i - 1] == '(':
+            ans += len(s)
         else:
             ans += 1
 print(ans)
