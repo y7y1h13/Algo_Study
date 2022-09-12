@@ -12,14 +12,13 @@ def max_n(inner_idx):
     return tmp, idx
 
 
-if __name__ == "__main__":
-    n = int(input())
-    a = list(map(int, input().split()))
-    s = int(input())
-    for i in range(n - 1):
-        max_Num, max_Idx = max_n(i)
-        if max_Idx != i:
-            del a[max_Idx]
-            a.insert(i, max_Num)
-            s -= (max_Idx - i)
-    print(*a)
+n = int(input())
+a = list(map(int, input().split()))
+s = int(input())
+for i in range(n - 1):
+    max_Num, max_Idx = max_n(i)
+    if max_Idx != i:
+        del a[max_Idx]
+        a.insert(i, max_Num)
+        s -= (max_Idx - i)
+print(*a)
