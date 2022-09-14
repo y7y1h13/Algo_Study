@@ -1,8 +1,3 @@
-import sys
-
-input = sys.stdin.readline
-
-
 def pipe(x, y, location):
     global ans
     if x == n - 1 and y == n - 1:  # 도착
@@ -20,7 +15,7 @@ def pipe(x, y, location):
 
 
 n = int(input())
-board = [list(map(int, input().strip().split())) for _ in range(n)]
+board = [list(map(int, input().split())) for _ in range(n)]
 ans = 0
 if board[n - 1][n - 1] == 1:
     print(0)
